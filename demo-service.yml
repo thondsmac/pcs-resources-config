@@ -1,9 +1,30 @@
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.1.9:8761/eureka/
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://127.0.0.1:5000/uaa/users/current
 
 feign:
   hystrix:
     enabled: true
     
 spring:
+  rabbitmq:
+    host: 127.0.0.1
   jpa:
     generate-ddl: 'true'
     properties:
@@ -22,6 +43,7 @@ spring:
     password: odoo
     username: odoo
     url: jdbc:postgresql://192.168.1.9:5432/db-ecommerce
+    
 camunda:
   bpm:
     admin-user:
@@ -31,11 +53,13 @@ camunda:
       db-reporter-activate: 'false'
     database:
       schema-update: 'true'
+      
 minio:
   secretKey: minio-root-password
   endpoint: http://192.168.1.9:9900
   accessKey: minio-root-user
   domain: http://192.168.1.9:9901
+  
 logging:
   level:
     org:
@@ -43,4 +67,5 @@ logging:
         data:
           mongodb:
             core:
-              MongoTemplate: DEBUG
+              MongoTemplate: DEBUGlogging:
+        security: INFO
