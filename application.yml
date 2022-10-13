@@ -1,15 +1,27 @@
+logging:
+  level:
+    org.springframework.security: INFO
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${URL_EUREKA_SERVICE}
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://127.0.0.1:5000/uaa/users/current
+
 spring:
-  cloud:
-    config:
-      server:
-        native:
-          search-locations: classpath:/shared
-  profiles:
-     active: native
-  security:
-    user:
-      password: ${CONFIG_SERVICE_PASSWORD}
-
-server:
-  port: 8888
-
+  rabbitmq:
+    host: 127.0.0.1
