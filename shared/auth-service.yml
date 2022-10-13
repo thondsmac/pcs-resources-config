@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      host: ${DB_AUTH_HOST}
+      username: smacuser
+      password: ${MONGODB_PASSWORD}
+      database: pcs-db
+      port: 27019
+
+server:
+  servlet:
+    context-path: /uaa
+  port: 5000
