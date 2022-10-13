@@ -2,3 +2,45 @@
 feign:
   hystrix:
     enabled: true
+    
+spring:
+  jpa:
+    generate-ddl: 'true'
+    properties:
+      hibernate:
+        ddl-auto: update
+        jdbc:
+          lob:
+            non_contextual_creation: 'false'
+        format_sql: 'true'
+    show-sql: 'true'
+  datasource:
+    hikari:
+      connectionTimeout: '2000'
+      minimumIdle: '5'
+      maximumPoolSize: '50'
+    password: odoo
+    username: odoo
+    url: jdbc:postgresql://192.168.1.9:5432/db-ecommerce
+camunda:
+  bpm:
+    admin-user:
+      password: noodles
+      id: noodles
+    metrics:
+      db-reporter-activate: 'false'
+    database:
+      schema-update: 'true'
+minio:
+  secretKey: minio-root-password
+  endpoint: http://192.168.1.9:9900
+  accessKey: minio-root-user
+  domain: http://192.168.1.9:9901
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
